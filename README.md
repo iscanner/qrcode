@@ -1,1 +1,5 @@
 # iscanner-qrcode
+
+---
+
+> qrcode generator
