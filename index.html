@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>qrcode</title>
+    <link rel="shortcut icon" href="assets/image/favicon.ico" type="image/x-icon" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <base target="_blank"/>
+  </head>
+  <body>
+    <div id="app">
+      <script>
+        var isOnline = !!~location.host.indexOf('github');
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = (isOnline ? '//unpkg.com/iscanner-qrcode@latest' : '.') + '/dist/homepage.js';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = (isOnline ? '//unpkg.com/iscanner-qrcode@latest' : '.') + '/assets/bootstrap.min.css';
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(link);
+        head.appendChild(script);
+      </script>
+    </div>
+  </body>
+</html>
