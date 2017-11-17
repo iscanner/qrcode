@@ -31,15 +31,24 @@ export default {
       placeHolderText: 'please input to generate qrcode'
     };
   },
+
   beforeMount() {
     QRCode.toDataURL(this.text, (err, url) => {
       this.url = url;
     });
   },
-  beforeUpdate() {
-    QRCode.toDataURL(this.text, (err, url) => {
-      this.url = url;
-    });
+  watch: {
+    text : function (val) {
+      this.refleshQRCode(val);
+    }
+  },
+  methods: {
+    refleshQRCode(text) {
+      QRCode.toDataURL(text, (err, url) => {
+        this.url = url;
+        history.pushState({}, document.title, `?url=${encodeURIComponent(this.text)}`);
+      });
+    }
   }
 };
 </script>
