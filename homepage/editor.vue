@@ -3,7 +3,7 @@
     <div class="qrcode-con">
       <img :src="url" />
     </div>
-    <div class="form-group">
+    <div style="margin-top: 30px;" class="form-group">
       <input class="form-control" :placeholder="placeHolderText" v-model="text" type="text" />
     </div>
   </div>
@@ -46,8 +46,10 @@ export default {
 <style lang="less">
 .qrcode-con {
   text-align: center;
+  margin-top: 100px;
   img {
     min-height: 200px;
+    max-height: 500px;
   }
 }
 </style>

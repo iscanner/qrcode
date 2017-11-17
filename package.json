@@ -32,6 +32,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue-libs": "^1.2.1",
     "file-loader": "^0.9.0",
+    "fork-me-on-github-vue": "^1.0.1",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
