@@ -2,7 +2,7 @@
   <div class="page">
     <slot></slot>
     <footer class="text-center">
-      &copy;&nbsp;<a href="//github.com/icanner">iscanner</a> {{ currentYear }}
+      &copy;&nbsp;<a href="//github.com/iscanner">iscanner</a> {{ currentYear }}
     </footer>
     <Ribbon
       v-bind="ribbon"
