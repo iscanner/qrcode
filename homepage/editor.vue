@@ -67,7 +67,7 @@ export default {
       QRCode.toDataURL(text, (err, url) => {
         const str = `?url=${encodeURIComponent(this.text)}`;
         history.pushState({}, document.title, str);
-        this.pushUrl = `${location.protocol}//${location.host}${str}`;
+        this.pushUrl =`${location.protocol}//${location.host}${location.pathname}${str}`;
         this.url = url;
         if (err) {
           console.log(err);
