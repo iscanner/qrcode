@@ -44,5 +44,8 @@
     "vue-template-compiler": "^2.0.0",
     "webpack": "^3.5.3",
     "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "clipboard": "^1.7.1"
   }
 }

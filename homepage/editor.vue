@@ -3,13 +3,17 @@
     <div class="qrcode-con">
       <img :src="url" />
     </div>
-    <div style="margin-top: 30px;" class="form-group">
+    <div class="form-group">
       <input class="form-control" :placeholder="placeHolderText" v-model="text" type="text" />
+    </div>
+    <div class="form-group">
+      <button class="btn btn-mini btn-primary" id="button" data-clipboard-action="copy">Copy</button>
     </div>
   </div>
 </template>
 <script>
 const QRCode = require('qrcode');
+const Clipboard = require('clipboard');
 
 const pkg = require('../package');
 
@@ -26,15 +30,30 @@ export default {
   name: 'editor',
   data() {
     return {
-      text: defaultUrl,
+      text:defaultUrl,
       url: defaultUrl,
-      placeHolderText: 'please input to generate qrcode'
+      placeHolderText: 'please input to generate qrcode',
+      pushUrl: defaultUrl
     };
   },
 
   beforeMount() {
     QRCode.toDataURL(this.text, (err, url) => {
       this.url = url;
+    });
+  },
+
+  mounted() {
+    var clipboard = new Clipboard('#button', {
+      text: () => {
+        return this.pushUrl;
+      }
+    });
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
     });
   },
   watch: {
@@ -45,8 +64,10 @@ export default {
   methods: {
     refleshQRCode(text) {
       QRCode.toDataURL(text, (err, url) => {
+        const str = `?url=${encodeURIComponent(this.text)}`;
+        history.pushState({}, document.title, str);
+        this.pushUrl = `${location.protocol}//${location.host}${str}`;
         this.url = url;
-        history.pushState({}, document.title, `?url=${encodeURIComponent(this.text)}`);
       });
     }
   }
@@ -60,5 +81,9 @@ export default {
     min-height: 200px;
     max-height: 500px;
   }
+}
+.form-group {
+  margin-top: 20px;
+  text-align: center;
 }
 </style>
