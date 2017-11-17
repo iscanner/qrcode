@@ -15,8 +15,6 @@
 const QRCode = require('qrcode');
 const Clipboard = require('clipboard');
 
-const pkg = require('../package');
-
 const getUrlParams = name => {
   var results = new RegExp(`[\\?&]${name}=([^&#]*)`).exec(location.href);
   return results ? results[1] : null;
@@ -30,7 +28,7 @@ export default {
   name: 'editor',
   data() {
     return {
-      text:defaultUrl,
+      text: defaultUrl,
       url: defaultUrl,
       placeHolderText: 'please input to generate qrcode',
       pushUrl: defaultUrl
@@ -40,6 +38,9 @@ export default {
   beforeMount() {
     QRCode.toDataURL(this.text, (err, url) => {
       this.url = url;
+      if (err) {
+        console.log(err);
+      }
     });
   },
 
@@ -50,24 +51,27 @@ export default {
       }
     });
     clipboard.on('success', function(e) {
-        console.log(e);
+      console.log(e);
     });
     clipboard.on('error', function(e) {
-        console.log(e);
+      console.log(e);
     });
   },
   watch: {
-    text : function (val) {
-      this.refleshQRCode(val);
+    text: function(val) {
+      this.updateQRCode(val);
     }
   },
   methods: {
-    refleshQRCode(text) {
+    updateQRCode(text) {
       QRCode.toDataURL(text, (err, url) => {
         const str = `?url=${encodeURIComponent(this.text)}`;
         history.pushState({}, document.title, str);
         this.pushUrl = `${location.protocol}//${location.host}${str}`;
         this.url = url;
+        if (err) {
+          console.log(err);
+        }
       });
     }
   }
