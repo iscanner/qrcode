@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <slot></slot>
-    <footer class="text-center">
+    <footer>
       &copy;&nbsp;<a href="//github.com/iscanner">iscanner</a> {{ currentYear }}
     </footer>
     <Ribbon
@@ -23,13 +23,18 @@ export default {
         flat: true,
         classPrefix: pkg.name
       },
-      currentYear: new Date().getFullYear()
+      currentYear: new Date().getFullYear(),
+      version: pkg.version
     };
   }
 };
 </script>
 <style lang="less">
 footer {
+  width: 550px;
   margin: 10px;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
 }
 </style>

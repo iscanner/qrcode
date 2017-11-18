@@ -4,3 +4,4 @@ coverage/
 *.html
 *.sw*
 *.un~
+*.map

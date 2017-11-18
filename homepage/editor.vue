@@ -22,7 +22,7 @@ const getUrlParams = name => {
 
 const query = getUrlParams('url');
 
-const defaultUrl = query ? decodeURIComponent(getUrlParams('url')) : location.href;
+const defaultUrl = query ? decodeURIComponent(query) : location.href;
 
 export default {
   name: 'editor',
@@ -89,5 +89,12 @@ export default {
 .form-group {
   margin-top: 20px;
   text-align: center;
+}
+.form-control {
+  padding: .5rem 1rem;
+  font-size: 2.5rem;
+  line-height: 3;
+  border-radius: .3rem;
+  height: 5rem;
 }
 </style>
