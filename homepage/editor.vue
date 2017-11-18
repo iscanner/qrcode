@@ -2,6 +2,7 @@
   <div class="editor">
     <div class="qrcode-con">
       <img :src="url" />
+      <h3>please open in desktop</h3>
     </div>
     <div class="form-group">
       <input class="form-control" :placeholder="placeHolderText" v-model="text" type="text" />
@@ -85,6 +86,9 @@ export default {
     min-height: 200px;
     max-height: 500px;
   }
+  h3 {
+    display: none;
+  }
 }
 .form-group {
   margin-top: 20px;
@@ -96,5 +100,15 @@ export default {
   line-height: 3;
   border-radius: .3rem;
   height: 5rem;
+}
+@media only screen and (max-width: 500px) {
+  .form-group {
+    display: none;
+  }
+  .qrcode-con {
+    h3 {
+      display: block;
+    }
+  }
 }
 </style>

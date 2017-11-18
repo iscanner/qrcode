@@ -1,7 +1,7 @@
 {
   "name": "iscanner-qrcode",
   "description": "qrcode generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "keywords": [
     "qrcode"
   ],
