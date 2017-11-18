@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const pkg = require('./package');
 
@@ -13,13 +14,23 @@ module.exports = {
     library:'[name]',
     libraryTarget: 'umd'
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json']
+  },
   externals: [
     {
     }
   ],
-  devtool: '#source-map',
   module: {
     loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'stage-2']
+        }
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader'
@@ -30,9 +41,16 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'json-loader',
-        exclude: /node_modules/
+        loader: 'json-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      comments: false
+    })
+  ]
 };
