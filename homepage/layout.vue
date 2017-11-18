@@ -37,4 +37,10 @@ footer {
   bottom: 0;
   text-align: center;
 }
+@media only screen and (max-width: 500px) {
+  footer {
+    width: 100%;
+  }
+}
+
 </style>
