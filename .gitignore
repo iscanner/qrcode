@@ -8,3 +8,5 @@ dist/
 assets/*.js
 *.sw*
 *.un~
+*.gz
+
