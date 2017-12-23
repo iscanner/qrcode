@@ -7,10 +7,11 @@
   ],
   "scripts": {
     "dev": "webpack-dev-server",
+    "dev:test": "cross-env NODE_ENV=test webpack-dev-server",
     "prepublish": "npm run build",
     "lint": "eslint --ext .js,.vue homepage",
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "serve": "npm run dev &",
+    "serve": "npm run dev:test &",
     "test": "macaca run -d ./test --reporter macaca-reporter",
     "ci": "npm run lint && npm run serve && npm run test"
   },
@@ -22,6 +23,7 @@
     "babel": "~5.8.23",
     "babel-core": "^6.17.0",
     "babel-loader": "^7.1.0",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -39,7 +41,6 @@
     "eslint-plugin-vue-libs": "^1.2.1",
     "file-loader": "^0.9.0",
     "fork-me-on-github-vue": "^1.0.3",
-    "istanbul-instrumenter-loader": "^3.0.0",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
