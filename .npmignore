@@ -1,7 +1,6 @@
 .travis.yml
 test/
 coverage/
-coverage/
 screenshots/
 reports/
 .ready

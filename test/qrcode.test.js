@@ -5,6 +5,8 @@ import {
   BASE_URL
 } from './helper';
 
+import pkg from '../package';
+
 describe('test/qrcode.test.js', () => {
   describe('page func testing', () => {
     before(() => {
@@ -31,7 +33,14 @@ describe('test/qrcode.test.js', () => {
     it('page render should be ok', () => {
       return driver
         .get(BASE_URL)
-        .sleep(1000);
+        .sleep(1000)
+        .elementByCss('div.editor > div:nth-child(2) > input')
+        .clear()
+        .sendKeys(pkg.repository.url)
+        .sleep(1000)
+        .elementByCss('#button')
+        .click()
+        .sleep(500);
     });
   });
 });
