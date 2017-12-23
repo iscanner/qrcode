@@ -5,7 +5,7 @@
   ],
   "plugins": [
     "transform-runtime",
-    "babel-plugin-istanbul"
+    "istanbul"
   ],
   "comments": false
 }
