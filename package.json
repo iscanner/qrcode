@@ -9,7 +9,10 @@
     "dev": "webpack-dev-server",
     "prepublish": "npm run build",
     "lint": "eslint --ext .js,.vue homepage",
-    "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
+    "serve": "npm run dev &",
+    "test": "macaca run -d ./test --reporter macaca-reporter",
+    "ci": "npm run lint && npm run serve && npm run test"
   },
   "repository": {
     "type": "git",
@@ -36,16 +39,22 @@
     "eslint-plugin-vue-libs": "^1.2.1",
     "file-loader": "^0.9.0",
     "fork-me-on-github-vue": "^1.0.3",
+    "istanbul-instrumenter-loader": "^3.0.0",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "macaca-cli": "^2.0.12",
+    "macaca-coverage": "^1.0.0",
+    "macaca-electron": "^1.1.17",
+    "macaca-reporter": "^1.0.36",
+    "macaca-wd": "^1.0.18",
     "marked": "^0.3.2",
     "qrcode": "^1.0.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "vue": "^2.0.0",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.0.0",
-    "webpack": "^3.5.3",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }

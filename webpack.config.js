@@ -1,7 +1,20 @@
+'use strict';
+
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 
 const pkg = require('./package');
+
+class WebpackAfterAllPlugin {
+  apply (compiler) {
+    compiler.plugin('done', (compilation) => {
+      setTimeout(() => {
+        fs.writeFileSync(path.join(__dirname, '.ready'), '');
+      }, 1000);
+    });
+  }
+}
 
 module.exports = {
   entry: {
@@ -33,7 +46,12 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          postLoaders: {
+            js: 'istanbul-instrumenter-loader?esModules=true&coverageVariable=__macaca_coverage__',
+          },
+        },
       },
       {
         test: /\.less$/,
@@ -46,11 +64,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      comments: false
-    })
+    new WebpackAfterAllPlugin()
   ]
 };
