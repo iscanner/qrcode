@@ -46,12 +46,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          postLoaders: {
-            js: 'istanbul-instrumenter-loader?esModules=true&coverageVariable=__macaca_coverage__',
-          },
-        },
+        loader: 'vue-loader'
       },
       {
         test: /\.less$/,
