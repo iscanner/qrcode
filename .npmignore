@@ -3,7 +3,6 @@ test/
 coverage/
 screenshots/
 reports/
-.ready
 *.sw*
 *.un~
 *.gz

@@ -6,7 +6,6 @@ Thumbs.db
 coverage/
 screenshots/
 reports/
-.ready
 dist/
 assets/*.js
 *.sw*

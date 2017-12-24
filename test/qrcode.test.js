@@ -32,7 +32,7 @@ describe('test/qrcode.test.js', () => {
 
     it('page render should be ok', () => {
       return driver
-        .get(BASE_URL)
+        .getUrl(BASE_URL)
         .sleep(1000)
         .elementByCss('div.editor > div:nth-child(2) > input')
         .clear()

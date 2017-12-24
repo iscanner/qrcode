@@ -1,20 +1,9 @@
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 
 const pkg = require('./package');
-
-class WebpackAfterAllPlugin {
-  apply (compiler) {
-    compiler.plugin('done', (compilation) => {
-      setTimeout(() => {
-        fs.writeFileSync(path.join(__dirname, '.ready'), '');
-      }, 1000);
-    });
-  }
-}
 
 module.exports = {
   entry: {
@@ -57,8 +46,5 @@ module.exports = {
         loader: 'json-loader'
       }
     ]
-  },
-  plugins: [
-    new WebpackAfterAllPlugin()
-  ]
+  }
 };
