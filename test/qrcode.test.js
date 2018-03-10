@@ -1,9 +1,13 @@
 'use strict';
 
 import {
+  webpackHelper
+} from 'macaca-wd';
+
+const {
   driver,
   BASE_URL
-} from './helper';
+} = webpackHelper;
 
 import pkg from '../package';
 
