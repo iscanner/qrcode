@@ -13,7 +13,8 @@
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "serve": "npm run dev:test &",
     "test": "macaca run -d ./test --reporter macaca-reporter",
-    "ci": "npm run lint && npm run serve && npm run test"
+    "ci": "npm run lint && npm run serve && npm run test",
+    "contributor": "git-contributor"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "eslint-plugin-vue-libs": "^1.2.1",
     "file-loader": "^0.9.0",
     "fork-me-on-github-vue": "^1.0.3",
+    "git-contributor": "^1.0.8",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
