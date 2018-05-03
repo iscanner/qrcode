@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.vue homepage",
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "serve": "npm run dev:test &",
-    "test": "macaca run -d ./test --reporter macaca-reporter",
+    "test": "macaca run -d ./test",
     "ci": "npm run lint && npm run serve && npm run test",
     "contributor": "git-contributor"
   },
